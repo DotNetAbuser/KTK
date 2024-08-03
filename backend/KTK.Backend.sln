@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Domain", "src\KTK.Domain\KTK.Domain.csproj", "{6A264100-20D9-4130-8A9B-D060304F3AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Application", "src\KTK.Application\KTK.Application.csproj", "{BA8626AD-2DDA-430D-81DA-03D681D95102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Infrastructure", "src\KTK.Infrastructure\KTK.Infrastructure.csproj", "{206DAA03-6EAE-48DC-8840-AA195E126806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Api", "src\KTK.Api\KTK.Api.csproj", "{07636FEE-4423-407C-BCFE-2B7A58BFD49F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Shared", "src\KTK.Shared\KTK.Shared.csproj", "{8AE9EB88-DA72-4A3D-90E0-C73B364F8993}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A264100-20D9-4130-8A9B-D060304F3AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A264100-20D9-4130-8A9B-D060304F3AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A264100-20D9-4130-8A9B-D060304F3AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A264100-20D9-4130-8A9B-D060304F3AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8626AD-2DDA-430D-81DA-03D681D95102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8626AD-2DDA-430D-81DA-03D681D95102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8626AD-2DDA-430D-81DA-03D681D95102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8626AD-2DDA-430D-81DA-03D681D95102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206DAA03-6EAE-48DC-8840-AA195E126806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206DAA03-6EAE-48DC-8840-AA195E126806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206DAA03-6EAE-48DC-8840-AA195E126806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206DAA03-6EAE-48DC-8840-AA195E126806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07636FEE-4423-407C-BCFE-2B7A58BFD49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07636FEE-4423-407C-BCFE-2B7A58BFD49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07636FEE-4423-407C-BCFE-2B7A58BFD49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07636FEE-4423-407C-BCFE-2B7A58BFD49F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AE9EB88-DA72-4A3D-90E0-C73B364F8993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AE9EB88-DA72-4A3D-90E0-C73B364F8993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AE9EB88-DA72-4A3D-90E0-C73B364F8993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AE9EB88-DA72-4A3D-90E0-C73B364F8993}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
