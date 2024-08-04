@@ -8,3 +8,6 @@ global using Domain.Entities;
 global using Application.Responses.Common;
 global using Shared.Result;
 global using Application.Responses;
+global using System.Linq.Expressions;
+global using Domain.Entities.Base;
+global using Microsoft.EntityFrameworkCore.Query;

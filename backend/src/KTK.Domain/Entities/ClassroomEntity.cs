@@ -1,10 +1,11 @@
 ﻿namespace Domain.Entities;
 
-public sealed class ClassroomEntity : BaseEntity
+public sealed class ClassroomEntity : BaseEntity<int>
 {
     public ClassroomEntity(string title, bool isActive)
         => Title = title;
+
+    private ClassroomEntity() { }
     
-    public int ClassroomId { get; init; }
     public string Title { get; set; }
 }

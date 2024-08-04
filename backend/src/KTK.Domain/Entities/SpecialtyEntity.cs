@@ -1,16 +1,17 @@
 ﻿namespace Domain.Entities;
 
-public sealed class SpecialtyEntity : BaseEntity
+public sealed class SpecialtyEntity : BaseEntity<int>
 {
-    public int SpecialtyId { get; init; }
+    public SpecialtyEntity(int faculityId, string code, string title)
+        => (FaculityId, Code, Title) = (faculityId, code, title);
+
+    private SpecialtyEntity() { }
+    
     public int FaculityId { get; set; }
     public string Code { get; set; }
     public string Title { get; set; }
 
     public FacultyEntity Faculty { get; } = null!;
     public ICollection<CourseEntity> Courses { get; } = [];
-    public ICollection<SpecialtyEntity> Specialties { get; } = [];
-
-    public SpecialtyEntity(int faculityId, string code, string title)
-        => (FaculityId, Code, Title) = (faculityId, code, title);
+    public ICollection<CollectiveEntity> Collectives { get; } = [];
 }

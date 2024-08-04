@@ -1,15 +1,7 @@
 ﻿namespace Domain.Entities;
 
-public sealed class SubjectEntity : BaseEntity
+public sealed class SubjectEntity : BaseEntity<int>
 {
-    public int SubjectId { get; init; }
-    public int CourseId { get; set; }
-    public string Code { get; set; }
-    public string Title { get; set; }
-    public int Hours { get;  set; }
-
-    public CourseEntity Course { get; } = null!;
-    
     public SubjectEntity(
         int courseId, string code, string title, int hours)
     {
@@ -18,4 +10,14 @@ public sealed class SubjectEntity : BaseEntity
         Title = title;
         Hours = hours;
     }
+
+    private SubjectEntity() { }
+    
+    public int CourseId { get; set; }
+    public string Code { get; set; }
+    public string Title { get; set; }
+    public int Hours { get;  set; }
+
+    public CourseEntity Course { get; } = null!;
+    public ICollection<UserEntity> Rectors{ get; } = [];
 }

@@ -5,18 +5,26 @@ public class FacultyEntityConfiguration : IEntityTypeConfiguration<FacultyEntity
     public void Configure(EntityTypeBuilder<FacultyEntity> builder)
     {
         builder
-            .HasKey(x => x.FacultyId);
+            .HasQueryFilter(f => f.IsDeleted == false);
+        
+        builder
+            .HasKey(f => f.Id)
+            .HasName("FacultyId");
 
         builder
-            .HasIndex(x => x.Title)
+            .HasIndex(f => f.Title)
             .IsUnique();
         builder
-            .Property(x => x.Title)
+            .Property(f => f.Title)
             .HasMaxLength(256);
-
+        
         builder
-            .HasMany(x => x.Specialties)
-            .WithOne(x => x.Faculty)
-            .HasForeignKey(x => x.FaculityId);
+            .Property(f => f.Created)
+            .IsRequired();
+        
+        builder
+            .HasMany(f => f.Specialties)
+            .WithOne(s => s.Faculty)
+            .HasForeignKey(s => s.FaculityId);
     }
 }

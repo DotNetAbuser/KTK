@@ -4,6 +4,7 @@ public class RectorSubjectEntityConfiguration : IEntityTypeConfiguration<RectorS
 {
     public void Configure(EntityTypeBuilder<RectorSubjectEntity> builder)
     {
-        throw new NotImplementedException();
+        builder
+            .HasKey(rs => new { rs.SubjectId, rs.RectorId });
     }
 }

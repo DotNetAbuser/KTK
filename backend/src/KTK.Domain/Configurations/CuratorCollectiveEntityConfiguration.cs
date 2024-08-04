@@ -4,6 +4,7 @@ public class CuratorCollectiveEntityConfiguration : IEntityTypeConfiguration<Cur
 {
     public void Configure(EntityTypeBuilder<CuratorCollectiveEntity> builder)
     {
-        throw new NotImplementedException();
+        builder
+            .HasKey(cc => new { cc.CollectiveId, cc.CuratorId });
     }
 }

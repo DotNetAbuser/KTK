@@ -4,6 +4,7 @@ public class StudentCollectiveEntityConfiguration : IEntityTypeConfiguration<Stu
 {
     public void Configure(EntityTypeBuilder<StudentCollectiveEntity> builder)
     {
-        throw new NotImplementedException();
+        builder
+            .HasKey(sc => new { sc.StudentId, sc.CollectiveId });
     }
 }

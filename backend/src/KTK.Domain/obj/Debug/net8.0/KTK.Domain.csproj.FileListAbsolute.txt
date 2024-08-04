@@ -1,6 +1,15 @@
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\bin\Debug\net8.0\KTK.Domain.deps.json
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\bin\Debug\net8.0\KTK.Domain.runtimeconfig.json
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\bin\Debug\net8.0\KTK.Domain.dll
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\bin\Debug\net8.0\KTK.Domain.pdb
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.csproj.AssemblyReference.cache
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.AssemblyInfoInputs.cache
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.AssemblyInfo.cs
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.csproj.CoreCompileInputs.cache
 C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.sourcelink.json
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.dll
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\refint\KTK.Domain.dll
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.pdb
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\KTK.Domain.genruntimeconfig.cache
+C:\Users\ilyao\Desktop\KTK\backend\src\KTK.Domain\obj\Debug\net8.0\ref\KTK.Domain.dll

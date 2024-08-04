@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "z8/jf/uVtfFHkS7UZKSCL97FvnwEOhJPQdCo8dr/ZzU=",
-  "Source": "Server",
-  "BasePath": "_content/Server",
+  "Hash": "L0va7u4GKS6rbqVB3OzWKMpAzl5o243Csa7GppxalaM=",
+  "Source": "KTK.Api",
+  "BasePath": "_content/KTK.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

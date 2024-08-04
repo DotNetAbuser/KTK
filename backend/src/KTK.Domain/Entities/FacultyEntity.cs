@@ -1,11 +1,14 @@
 ﻿namespace Domain.Entities;
 
-public sealed class FacultyEntity : BaseEntity
+public sealed class FacultyEntity : BaseEntity<int>
 {
-    public int FacultyId { get; init; }
+    public FacultyEntity(string title, bool isActive)
+        => Title = title;
+
+    private FacultyEntity() { }
+    
     public string Title { get; set; }
     public ICollection<SpecialtyEntity> Specialties { get; } = [];
 
-    private FacultyEntity(string title, bool isActive)
-        => Title = title;
+
 }
