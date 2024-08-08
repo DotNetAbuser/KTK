@@ -1,14 +1,13 @@
 ﻿namespace Domain.Entities;
 
-public sealed class SessionEntity : BaseEntity<int>
+public sealed class SessionEntity : BaseEntity<SessionId>
 {
-    public SessionEntity(Guid userId, string token, DateTime expires)
-        => (UserId, Token, Expires) = (userId, token, expires);
+    public SessionEntity(SessionId id, UserEntity user, string token, DateTime expires)
+        => (Id, UserId, Token, ExpiresAt) = (id, user.Id, token, expires);
+    
     private SessionEntity() { }
     
-    public Guid UserId { get; }
+    public UserId UserId { get; }
     public string Token { get; }
-    public DateTime Expires { get; }
-
-    public UserEntity User { get; } = null!;
+    public DateTime ExpiresAt { get; }
 }

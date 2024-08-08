@@ -6,25 +6,42 @@ public class FacultyEntityConfiguration : IEntityTypeConfiguration<FacultyEntity
     {
         builder
             .HasQueryFilter(f => f.IsDeleted == false);
-        
+
         builder
-            .HasKey(f => f.Id)
-            .HasName("FacultyId");
+            .HasKey(f => f.Id);
+        builder
+            .Property(f => f.Id)
+            .HasConversion(f => f.Value,
+                v => new FacultyId(v))
+            .HasColumnName("faculty_id")
+            .IsRequired();
 
         builder
             .HasIndex(f => f.Title)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(f => f.Title)
-            .HasMaxLength(256);
-        
-        builder
-            .Property(f => f.Created)
+            .HasConversion(f => f.Value,
+                v => Title.Create(v).Data)
+            .HasColumnName("title")
+            .HasMaxLength(Title.MaxTitleLenght)
             .IsRequired();
         
         builder
-            .HasMany(f => f.Specialties)
-            .WithOne(s => s.Faculty)
-            .HasForeignKey(s => s.FaculityId);
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
     }
 }

@@ -7,49 +7,62 @@ public class CollectiveEntityConfiguration
     {
         builder
             .HasQueryFilter(c => c.IsDeleted == false);
-        
+
         builder
-            .HasKey(c => c.Id)
-            .HasName("CollectiveId");
+            .HasKey(c => c.Id);
+        builder
+            .Property(c => c.Id)
+            .HasConversion(c => c.Value,
+                v => new CollectiveId(v))
+            .HasColumnName("collective_id")
+            .IsRequired();
 
         builder
             .Property(c => c.SpecialityId)
+            .HasColumnName("speciality_id")
             .IsRequired();
 
         builder
-            .HasIndex(c => c.Title)
-            .IsUnique();
+            .HasIndex(t => t.Title)
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(c => c.Title)
-            .HasMaxLength(256)
+            .HasConversion(c => c.Value,
+                v => Title.Create(v).Data)
+            .HasColumnName("title")
+            .HasMaxLength(Title.MaxTitleLenght)
             .IsRequired();
 
         builder
-            .Property(c => c.EnrollmentDate)
+            .Property(c => c.EnrollmentAt)
+            .HasColumnName("enrollment_at")
             .IsRequired();
 
         builder
-            .Property(c => c.DeducationDate)
+            .Property(c => c.DeducationAt)
+            .HasColumnName("deducation_at")
             .IsRequired();
         
         builder
-            .HasOne(c => c.Specialty)
-            .WithMany(s => s.Collectives)
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
+        
+        builder
+            .HasOne<SpecialtyEntity>()
+            .WithMany()
             .HasForeignKey(c => c.SpecialityId);
-
-        builder
-            .HasMany(c => c.Students)
-            .WithMany(u => u.Collectives)
-            .UsingEntity<StudentCollectiveEntity>(
-                l => l.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.StudentId),
-                r => r.HasOne<CollectiveEntity>().WithMany().HasForeignKey(c => c.CollectiveId));
-
-        builder
-            .HasMany(c => c.Curators)
-            .WithMany(u => u.Collectives)
-            .UsingEntity<CuratorCollectiveEntity>(
-                l => l.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.CuratorId),
-                r => r.HasOne<CollectiveEntity>().WithMany().HasForeignKey(c => c.CollectiveId));
-
     }
 }

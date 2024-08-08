@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Domain", "src\KTK.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Application", "src\KTK.Application\KTK.Application.csproj", "{BA8626AD-2DDA-430D-81DA-03D681D95102}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Infrastructure", "src\KTK.Infrastructure\KTK.Infrastructure.csproj", "{206DAA03-6EAE-48DC-8840-AA195E126806}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Infra", "src\KTK.Infra\KTK.Infra.csproj", "{206DAA03-6EAE-48DC-8840-AA195E126806}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTK.Api", "src\KTK.Api\KTK.Api.csproj", "{07636FEE-4423-407C-BCFE-2B7A58BFD49F}"
 EndProject

@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "KTK.Api/1.0.0": {
         "dependencies": {
-          "KTK.Infrastructure": "1.0.0",
+          "KTK.Infra": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.7",
           "Microsoft.AspNetCore.OpenApi": "8.0.4",
           "Microsoft.EntityFrameworkCore.Design": "8.0.7",
@@ -670,6 +670,7 @@
       "KTK.Domain/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
+          "KTK.Shared": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4"
         },
@@ -677,12 +678,12 @@
           "KTK.Domain.dll": {}
         }
       },
-      "KTK.Infrastructure/1.0.0": {
+      "KTK.Infra/1.0.0": {
         "dependencies": {
           "KTK.Application": "1.0.0"
         },
         "runtime": {
-          "KTK.Infrastructure.dll": {}
+          "KTK.Infra.dll": {}
         }
       },
       "KTK.Shared/1.0.0": {
@@ -1100,7 +1101,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "KTK.Infrastructure/1.0.0": {
+    "KTK.Infra/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

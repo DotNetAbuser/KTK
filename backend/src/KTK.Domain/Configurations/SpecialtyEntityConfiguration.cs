@@ -7,43 +7,65 @@ public class SpecialtyEntityConfiguration
     {
         builder
             .HasQueryFilter(c => c.IsDeleted == false);
-        
-        builder
-            .HasKey(s => s.Id)
-            .HasName("SpecialityId");
 
         builder
-            .Property(s => s.FaculityId)
+            .HasKey(s => s.Id);
+        builder
+            .Property(s => s.Id)
+            .HasConversion(s => s.Value,
+                v => new SpecialityId(v))
+            .HasColumnName("speciality_id")
+            .IsRequired();
+
+        builder
+            .Property(s => s.FacultyId)
+            .HasColumnName("faculty_id")
             .IsRequired();
         
         builder
             .HasIndex(s => s.Code)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(s => s.Code)
-            .HasMaxLength(64)
+            .HasConversion(s => s.Value,
+                v => Code.Create(v).Data)
+            .HasColumnName("code")
+            .HasMaxLength(Code.MaxCodeLenght)
             .IsRequired();
-
+        
         builder
             .HasIndex(s => s.Title)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(s => s.Title)
-            .HasMaxLength(256)
+            .HasConversion(s => s.Value,
+                v => Title.Create(v).Data)
+            .HasColumnName("title")
+            .HasMaxLength(Title.MaxTitleLenght)
             .IsRequired();
+            
 
         builder
-            .Property(s => s.Created)
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
             .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
 
         builder
-            .HasOne(s => s.Faculty)
-            .WithMany(f => f.Specialties)
-            .HasForeignKey(s => s.FaculityId);
-
-        builder
-            .HasMany(s => s.Courses)
-            .WithOne(c => c.Specialty)
-            .HasForeignKey(c => c.SpecialityId);
+            .HasOne<FacultyEntity>()
+            .WithMany()
+            .HasForeignKey(s => s.FacultyId);
     }
 }

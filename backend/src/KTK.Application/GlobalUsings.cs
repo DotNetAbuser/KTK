@@ -5,9 +5,14 @@ global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel.DataAnnotations;
 global using System.Text.Json.Serialization;
 global using Domain.Entities;
-global using Application.Responses.Common;
+global using Application.Responses;
 global using Shared.Result;
 global using Application.Responses;
 global using System.Linq.Expressions;
 global using Domain.Entities.Base;
 global using Microsoft.EntityFrameworkCore.Query;
+global using Application.IRepositories;
+global using Application.Requests;
+global using Domain.ValueObjects;
+
+

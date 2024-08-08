@@ -5,6 +5,25 @@ public class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermissi
     public void Configure(EntityTypeBuilder<RolePermissionEntity> builder)
     {
         builder
-            .HasKey(rs => new { rs.RoleId, rs.PermissionId });
+            .HasKey(rp => new { rp.RoleId, rp.PermissionId });
+
+        builder
+            .Property(rp => rp.RoleId)
+            .HasColumnName("role_id")
+            .IsRequired();
+
+        builder
+            .Property(rp => rp.PermissionId)
+            .HasColumnName("permission_id")
+            .IsRequired();
+
+        builder
+            .HasOne<RoleEntity>()
+            .WithMany()
+            .HasForeignKey(rp => rp.RoleId);
+        builder
+            .HasOne<PermissionEntity>()
+            .WithMany()
+            .HasForeignKey(rp => rp.PermissionId);
     }
 }

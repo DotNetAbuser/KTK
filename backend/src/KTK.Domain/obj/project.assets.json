@@ -888,6 +888,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "KTK.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/KTK.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KTK.Shared.dll": {}
+        }
       }
     }
   },
@@ -2335,11 +2345,17 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "KTK.Shared/1.0.0": {
+      "type": "project",
+      "path": "../KTK.Shared/KTK.Shared.csproj",
+      "msbuildProject": "../KTK.Shared/KTK.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "KTK.Shared >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.4"
@@ -2352,11 +2368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ilyao\\Desktop\\KTK\\backend\\src\\KTK.Domain\\KTK.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Domain\\KTK.Domain.csproj",
       "projectName": "KTK.Domain",
-      "projectPath": "C:\\Users\\ilyao\\Desktop\\KTK\\backend\\src\\KTK.Domain\\KTK.Domain.csproj",
+      "projectPath": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Domain\\KTK.Domain.csproj",
       "packagesPath": "C:\\Users\\ilyao\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ilyao\\Desktop\\KTK\\backend\\src\\KTK.Domain\\obj\\",
+      "outputPath": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2377,7 +2393,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Shared\\KTK.Shared.csproj": {
+              "projectPath": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Shared\\KTK.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

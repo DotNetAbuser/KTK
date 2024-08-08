@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CP59etTqRgbxzduJVfj/dmYdrmgKXcrvZcReQ6nO5D1qAaEXYf03lpkbfkjvomUnnrBNy5boQ67qO7MuRUTgkQ==",
+  "dgSpecHash": "wBhhwarUQTvTL+wBKOiL0EynJNcWKk4z7+DqtlN1JLaJoWbKhOMuNFkONS9lfD534qj7LAujvjZWU+YwIhgFIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ilyao\\Desktop\\KTK\\backend\\src\\KTK.Shared\\KTK.Shared.csproj",
+  "projectFilePath": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Shared\\KTK.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

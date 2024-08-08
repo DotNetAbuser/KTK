@@ -18,11 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\Schedules\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\KTK.Infrastructure\KTK.Infrastructure.csproj" />
+      <ProjectReference Include="..\KTK.Infra\KTK.Infra.csproj" />
     </ItemGroup>
 
 </Project>

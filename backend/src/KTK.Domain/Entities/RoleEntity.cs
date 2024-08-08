@@ -1,17 +1,12 @@
 ﻿namespace Domain.Entities;
 
-public class RoleEntity : BaseEntity<int>
+public class RoleEntity : BaseEntity<RoleId>
 {
-    public RoleEntity(string title, string description)
-        => (Title, Description) = (title, description);
+    public RoleEntity(RoleId id, Title title, Description description)
+        => (Id, Title, Description) = (id, title, description);
 
     private RoleEntity() { }
     
-    public string Title { get; set; }
-    public string Description { get; set; }
-
-    public ICollection<PermissionsEntity> Permissions { get; } = [];
-    public ICollection<UserEntity> Users { get; } = [];
-
-
+    public Title Title { get; set; }
+    public Description Description { get; set; }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KTK.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f41853772f6f491f4f4e91b227cefddb1f71f3b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6419f6cec92b2ab2582bf7b59e91bba9a4f9309")]
 [assembly: System.Reflection.AssemblyProductAttribute("KTK.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KTK.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

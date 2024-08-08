@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xo9okKZb8Ab/P0/SMcwhYrL3+1Ij21mlpTHOxbg14hp0Wr7tbWusMvIOrOTTne1XXDtH2ob0uPTHLNU3VYQ/xQ==",
+  "dgSpecHash": "dUVxjphwI0gTKKzexhYVRdLQGGwJZgNhi1mSaqYkWpaLXP2uq4dIZGtlyNoYJJK71+5JN3/LRZ6uCov/SI7/0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ilyao\\Desktop\\KTK\\backend\\src\\KTK.Domain\\KTK.Domain.csproj",
+  "projectFilePath": "C:\\Users\\ilyao\\Desktop\\KTK\\Backend\\src\\KTK.Domain\\KTK.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ilyao\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\ilyao\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

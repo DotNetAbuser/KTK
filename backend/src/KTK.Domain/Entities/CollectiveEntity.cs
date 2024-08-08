@@ -1,26 +1,20 @@
 ﻿namespace Domain.Entities;
 
-public class CollectiveEntity : BaseEntity<int>
+public class CollectiveEntity : BaseEntity<CollectiveId>
 {
-    public CollectiveEntity(int specialityId,string title, 
-        DateTime enrollmentDate, DateTime deducationDate)
+    public CollectiveEntity(SpecialtyEntity speciality, Title title, 
+        DateTime enrollmentAt, DateTime deducationAt)
     {
-        SpecialityId = specialityId;
+        SpecialityId = speciality.Id;
         Title = title;
-        EnrollmentDate = enrollmentDate;
-        DeducationDate = deducationDate;
+        EnrollmentAt = enrollmentAt;
+        DeducationAt = deducationAt;
     }
 
     private CollectiveEntity() { }
     
-    public int SpecialityId { get; set; }
-    public string Title { get; set; }
-    public DateTime EnrollmentDate { get; set; }
-    public DateTime DeducationDate { get; set; }
-    
-    public SpecialtyEntity Specialty { get; } = null!;
-    public ICollection<UserEntity> Students { get; } = [];
-    public ICollection<UserEntity> Curators { get; } = [];
-    
-
+    public SpecialityId SpecialityId { get; set; }
+    public Title Title { get; set; }
+    public DateTime EnrollmentAt { get; set; }
+    public DateTime DeducationAt { get; set; }
 }

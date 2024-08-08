@@ -2,19 +2,20 @@
 
 namespace Domain.Entities;
 
-public sealed class UserEntity : BaseEntity<Guid>
+public sealed class UserEntity 
+    : BaseEntity<UserId>
 {
     public UserEntity(
-        int roleId,
+        RoleEntity role,
         Name name,
-        string username,
-        string passwordHash,
-        char gender,
-        string email,
-        string phoneNumber,
+        Username username,
+        PasswordHash passwordHash,
+        Gender gender,
+        Email email,
+        PhoneNumber phoneNumber,
         bool isActive)
     {
-        RoleId = roleId;
+        RoleId = role.Id;
         Name = name;
         Username = username;
         PasswordHash = passwordHash;
@@ -26,24 +27,12 @@ public sealed class UserEntity : BaseEntity<Guid>
 
     private UserEntity() { }
     
-    public int RoleId { get; set; }
-    public Name Name { get; private set; }
-    public string Username { get; set; }
-    public string PasswordHash { get; set; }
-    public char Gender { get; set; }
-    public string Email { get; set; }
-    public string PhoneNumber { get; set; }
+    public RoleId RoleId { get; set; }
+    public Name Name { get; set; }
+    public Username Username { get; set; }
+    public PasswordHash PasswordHash { get; set; }
+    public Gender Gender { get; set; }
+    public Email Email { get; set; }
+    public PhoneNumber PhoneNumber { get; set; }
     public bool IsActive { get; set; }
-
-    public RoleEntity Role { get; } = null!;
-    public ICollection<SessionEntity> Sessions { get; } = [];
-    public ICollection<CollectiveEntity> Collectives { get; } = [];
-    public ICollection<SubjectEntity> Subjects { get; } = [];
-    
-    public void UpdateName(Name name)
-    {
-        if (name == null) throw new ArgumentException("Name cannot be null!");
-        if (Name.Equals(name)) return;
-        Name = name;
-    }
 }

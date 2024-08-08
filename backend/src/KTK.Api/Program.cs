@@ -1,3 +1,6 @@
+using Domain.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -7,8 +10,10 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
     serverOptions.Configure(kestrelSection);
 }).UseKestrel();
 
+builder.Services.AddTransient<DbContext, ApplicationDbContext>();
 builder.Services.AddDatabase(configuration);
 
+builder.Services.AddUnitOfWork();
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 
@@ -28,5 +33,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

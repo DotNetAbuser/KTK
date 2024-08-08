@@ -8,13 +8,14 @@ public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
     {
         builder
             .HasQueryFilter(u => u.IsDeleted == false);
-        
-        builder
-            .HasKey(u => u.Id)
-            .HasName("UserId");
 
         builder
-            .Property(u => u.RoleId)
+            .HasKey(u => u.Id);
+        builder
+            .Property(u => u.Id)
+            .HasConversion(i => i.Value,
+                v => new UserId(v))
+            .HasColumnName("user_id")
             .IsRequired();
 
         builder
@@ -22,75 +23,92 @@ public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
             {
                 name
                     .Property(n => n.Last)
-                    .HasColumnName("LastName")
+                    .HasColumnName("last_name")
                     .IsRequired();
                 name
                     .Property(n => n.First)
-                    .HasColumnName("FirstName")
+                    .HasColumnName("first_name")
                     .IsRequired();
                 name
                     .Property(n => n.Middle)
-                    .HasColumnName("MiddleName");
+                    .HasColumnName("middle_name")
+                    .IsRequired(false);
             });
 
         builder
             .HasIndex(u => u.Username)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(u => u.Username)
-            .HasMaxLength(64)
+            .HasConversion(u => u.Value,
+                v => Username.Create(v).Data)
+            .HasColumnName("username")
+            .HasMaxLength(Username.MaxUsernameLenght)
             .IsRequired();
-
+        
         builder
             .Property(u => u.PasswordHash)
+            .HasConversion(p => p.Value,
+                v => PasswordHash.Create(v, v).Data)
+            .HasColumnName("password_hash")
             .IsRequired();
-
+        
         builder
             .Property(u => u.Gender)
+            .HasConversion(g => g.Value,
+                v => Gender.Create(v).Data)
+            .HasColumnName("gender")
             .IsRequired();
-
+        
         builder
             .HasIndex(u => u.Email)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(u => u.Email)
-            .HasMaxLength(256)
-            .IsRequired(false);;
-
+            .HasConversion(e => e.Value,
+                v => Email.Create(v).Data)
+            .HasColumnName("email")
+            .HasMaxLength(Email.MaxEmailLenght)
+            .IsRequired(false);
+        
         builder
             .HasIndex(u => u.PhoneNumber)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(u => u.PhoneNumber)
-            .HasMaxLength(32)
+            .HasConversion(p => p.Value,
+                v => PhoneNumber.Create(v).Data)
+            .HasColumnName("phone_number")
+            .HasMaxLength(PhoneNumber.MaxPhoneNumberLenght)
             .IsRequired(false);
 
+        builder
+            .Property(u => u.IsActive)
+            .HasColumnName("is_active");
 
         builder
-            .HasOne(u => u.Role)
-            .WithMany(r => r.Users)
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
+
+        builder
+            .HasOne<RoleEntity>()
+            .WithMany()
             .HasForeignKey(u => u.RoleId);
-
-        builder
-            .HasMany(u => u.Collectives)
-            .WithMany(c => c.Students)
-            .UsingEntity<StudentCollectiveEntity>(
-                l => l.HasOne<CollectiveEntity>().WithMany().HasForeignKey(c => c.CollectiveId),
-                r => r.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.StudentId));
-
-        builder
-            .HasMany(u => u.Collectives)
-            .WithMany(c => c.Curators)
-            .UsingEntity<CuratorCollectiveEntity>(
-                l => l.HasOne<CollectiveEntity>().WithMany().HasForeignKey(c => c.CollectiveId),
-                r => r.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.CuratorId));
-
-        builder
-            .HasMany(u => u.Subjects)
-            .WithMany(s => s.Rectors)
-            .UsingEntity<RectorSubjectEntity>(
-                l => l.HasOne<SubjectEntity>().WithMany().HasForeignKey(s => s.SubjectId),
-                r => r.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.RectorId));
 
     }
 }

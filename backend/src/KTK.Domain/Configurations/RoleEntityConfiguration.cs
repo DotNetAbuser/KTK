@@ -6,41 +6,50 @@ public class RoleEntityConfiguration : IEntityTypeConfiguration<RoleEntity>
     {
         builder
             .HasQueryFilter(r => r.IsDeleted == false);
-        
-        builder
-            .HasKey(r => r.Id)
-            .HasName("RoleId");
 
         builder
-            .Property(r => r.Title)
-            .HasMaxLength(64)
+            .HasKey(r => r.Id);
+        builder
+            .Property(r => r.Id)
+            .HasConversion(r => r.Value,
+                r => new RoleId(r))
+            .HasColumnName("role_id")
             .IsRequired();
+     
         builder
             .HasIndex(r => r.Title)
-            .IsUnique();
-
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
-            .Property(r => r.Description)
-            .HasMaxLength(512)
+            .Property(r => r.Title)
+            .HasConversion(r => r.Value,
+                v => Title.Create(v).Data)
+            .HasColumnName("title")
+            .HasMaxLength(Title.MaxTitleLenght)
             .IsRequired();
-        builder
-            .HasIndex(r => r.Description)
-            .IsUnique();
-
-        builder
-            .Property(r => r.Created)
-            .IsRequired();
-
-        builder
-            .HasMany(r => r.Users)
-            .WithOne(u => u.Role)
-            .HasForeignKey(u => u.RoleId);
         
         builder
-            .HasMany(r => r.Permissions)
-            .WithMany(p => p.Roles)
-            .UsingEntity<RolePermissionEntity>(
-                l => l.HasOne<PermissionsEntity>().WithMany().HasForeignKey(p => p.PermissionId),
-                r => r.HasOne<RoleEntity>().WithMany().HasForeignKey(r => r.RoleId));
+            .Property(r => r.Description)
+            .HasConversion(d => d.Value,
+                v => Description.Create(v).Data)
+            .HasColumnName("description")
+            .HasMaxLength(Description.MaxDescriptionLenght)
+            .IsRequired(false);
+
+        builder
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
     }
 }

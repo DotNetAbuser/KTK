@@ -2,12 +2,12 @@
 
 public class RolePermissionEntity
 {
-    public RolePermissionEntity(int roleId, int permissionId)
+    public RolePermissionEntity(RoleId roleId, PermissionId permissionId)
         => (RoleId, PermissionId) = (roleId, permissionId);
 
     private RolePermissionEntity() { }
     
-    public int RoleId { get; set; }
-    public int PermissionId { get; set; }
+    public RoleId RoleId { get; set; }
+    public PermissionId PermissionId { get; set; }
     
 }

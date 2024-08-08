@@ -7,49 +7,70 @@ public class SubjectEntityConfiguration
     {
         builder
             .HasQueryFilter(s => s.IsDeleted == false);
-        
+
         builder
-            .HasKey(s => s.Id)
-            .HasName("SubjectId");
+            .HasKey(s => s.Id);
+        builder
+            .Property(s => s.Id)
+            .HasConversion(i => i.Value,
+                v => new SubjectId(v))
+            .HasColumnName("subject_id")
+            .IsRequired();
 
         builder
             .Property(s => s.CourseId)
+            .HasColumnName("course_id")
             .IsRequired();
-
+        
         builder
             .HasIndex(s => s.Code)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(s => s.Code)
-            .HasMaxLength(64)
+            .HasConversion(c => c.Value,
+                v => Code.Create(v).Data)
+            .HasColumnName("code")
+            .HasMaxLength(Code.MaxCodeLenght)
             .IsRequired();
-
+        
         builder
             .HasIndex(s => s.Title)
-            .IsUnique();
+            .IsUnique()
+            .HasFilter("is_deleted IS NULL");
         builder
             .Property(s => s.Title)
-            .HasMaxLength(256)
+            .HasConversion(s => s.Value,
+                v => Title.Create(v).Data)
+            .HasColumnName("title")
+            .HasMaxLength(Title.MaxTitleLenght)
             .IsRequired();
 
         builder
             .Property(s => s.Hours)
+            .HasColumnName("hours")
             .IsRequired();
+        
+        builder
+            .Property(c => c.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+        builder
+            .Property(c => c.UpdatedAt)
+            .HasColumnName("updated_at")
+            .IsRequired(false);
+        builder
+            .Property(c => c.IsDeleted)
+            .HasColumnName("is_deleted");
+        builder
+            .Property(c => c.DeletedAt)
+            .HasColumnName("deleted_at")
+            .IsRequired(false);
 
         builder
-            .Property(s => s.Created)
-            .IsRequired();
-
-        builder
-            .HasOne(s => s.Course)
-            .WithMany(c => c.Subjects)
+            .HasOne<CourseEntity>()
+            .WithMany()
             .HasForeignKey(s => s.CourseId);
 
-        builder
-            .HasMany(s => s.Rectors)
-            .WithMany(u => u.Subjects)
-            .UsingEntity<RectorSubjectEntity>(
-                l => l.HasOne<UserEntity>().WithMany().HasForeignKey(u => u.RectorId),
-                r => r.HasOne<SubjectEntity>().WithMany().HasForeignKey(s => s.SubjectId));
     }
 }
